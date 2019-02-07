@@ -12,9 +12,14 @@ public class ShopSteps extends ScenarioSteps {
         shopPage.clickOnShopButton();
     }
 
-    @Step
+    public void selectFromProducts() {
+        shopPage.selectProduct();
+    }
+
+    @StepGroup
     public void validShoping() {
         clickOnShopButton();
+        selectFromProducts();
     }
 
 }

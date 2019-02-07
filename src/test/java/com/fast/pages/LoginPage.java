@@ -17,15 +17,14 @@ public class LoginPage extends PageObject {
     @FindBy(css = "button[name='login']")
     private WebElementFacade loginButton;
 
-    public void setEmailField() {
+    public void trueCredentialsLogin() {
         typeInto(emailField, "ioanaa.bohus@gmail.com");
-    }
-
-    public void setPasswordField() {
         typeInto(passwordField, "parolaParola11");
+        clickOn(loginButton);
     }
-
-    public void clickLoginButton() {
+    public void invalidCredentialsLogin () {
+        typeInto(emailField, "blabla@whatever.com");
+        typeInto(passwordField, "parolaparolaparola");
         clickOn(loginButton);
     }
 
@@ -36,6 +35,12 @@ public class LoginPage extends PageObject {
         waitFor(helloIoana);
         return helloIoana.containsText("Hello ioanaa.bohus");
 
+    }
+    @FindBy (css="li strong")
+    private WebElementFacade errorMessage;
+    public boolean checkFailedLogin () {
+        waitFor(errorMessage);
+        return errorMessage.containsText ("ERROR: Invalid email address.");
     }
 }
 

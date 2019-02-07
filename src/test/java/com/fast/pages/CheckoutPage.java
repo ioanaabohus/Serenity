@@ -11,7 +11,7 @@ public class CheckoutPage extends PageObject {
     private WebElementFacade firstName;
     @FindBy(id = "billing_last_name")
     private WebElementFacade lastName;
-    @FindBy(id = "select2-billing_country-container")
+    @FindBy(id = "billing_country")
     private WebElementFacade country;
     @FindBy(id = "billing_adress_1")
     private WebElementFacade adress;

@@ -19,10 +19,16 @@ public class LoginTests {
     public void validLogin () {
         loginSteps.navigateToHomePage();
         loginSteps.goToMyAccountButton();
-        loginSteps.setEmailField();
-        loginSteps.setPasswordField();
-        loginSteps.clickLoginButton();
+        loginSteps.loginWithValidCredentials();
         loginSteps.checkLoggedIn();
     }
+    @Test
+    public void invalidLogin () {
+        loginSteps.navigateToHomePage();
+        loginSteps.goToMyAccountButton();
+        loginSteps.loginWithInvalidCredentials();
+        loginSteps.checkErrorMessage();
+    }
+
 
 }

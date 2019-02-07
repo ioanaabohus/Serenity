@@ -9,38 +9,51 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class LoginSteps extends ScenarioSteps {
     HomePage homePage;
     LoginPage loginPage;
+
     @Step
-    public void navigateToHomePage () {
+    public void navigateToHomePage() {
         homePage.open();
     }
+
     @Step
     public void goToMyAccountButton() {
         homePage.clickMyAccountButton();
     }
+
     @Step
-    public void setEmailField () {
-        loginPage.setEmailField();
+    public void loginWithValidCredentials() {
+        loginPage.trueCredentialsLogin();
     }
+
     @Step
-    public void setPasswordField () {
-        loginPage.setPasswordField();
+    public void loginWithInvalidCredentials() {
+        loginPage.invalidCredentialsLogin();
     }
+
     @Step
-    public void clickLoginButton () {
-        loginPage.clickLoginButton();
-    }
-    @Step
-    public void checkLoggedIn () {
+    public void checkLoggedIn() {
         loginPage.checkLoggedIn();
     }
+
+    @Step
+    public void checkErrorMessage() {
+        loginPage.checkFailedLogin();
+    }
+
     @StepGroup
-    public void validLogin () {
+    public void validLogin() {
         navigateToHomePage();
         goToMyAccountButton();
-        setEmailField();
-        setPasswordField();
-        clickLoginButton();
+        loginWithValidCredentials();
         checkLoggedIn();
+    }
+
+    @StepGroup
+    public void invalidLogin() {
+        navigateToHomePage();
+        goToMyAccountButton();
+        loginWithInvalidCredentials();
+        checkErrorMessage();
     }
 
 }
