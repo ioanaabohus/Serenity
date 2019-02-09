@@ -8,10 +8,12 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class ShopSteps extends ScenarioSteps {
     ShopPage shopPage;
 
+    @Step
     public void clickOnShopButton() {
         shopPage.clickOnShopButton();
     }
 
+    @Step
     public void selectFromProducts() {
         shopPage.selectProduct();
     }

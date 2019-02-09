@@ -4,37 +4,46 @@ import com.fast.pages.CheckoutPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.junit.Assert;
 
 public class CheckoutSteps extends ScenarioSteps {
     CheckoutPage checkoutPage;
 
     @Step
     public void setFirstName () {
-        checkoutPage.setFirstFiled();
+        checkoutPage.setFirstFiled("Ioana");
     }
     @Step
     public void setLastName () {
-        checkoutPage.setLastField();
+        checkoutPage.setLastField("Bohus");
     }
     @Step
     public void selectCountry () {
-        checkoutPage.setCountry();
+        checkoutPage.setCountry("Romania");
     }
     @Step
     public void fillAdress () {
-        checkoutPage.setAdress();
+        checkoutPage.setAdress("Buna ziua 35");
     }
     @Step
     public void fillCity () {
-        checkoutPage.setCity();
+        checkoutPage.setCity("Cluj-Napoca");
     }
     @Step
     public void fillPostcode () {
-        checkoutPage.setPostcode();
+        checkoutPage.setPostcode("400498");
     }
     @Step
-    public void fillPhone () {
-        checkoutPage.setPhone();
+    public void completeValidPhone () {
+        checkoutPage.setPhone("0712345678");
+    }
+    @Step
+    public void completeInvalidPhone () {
+        checkoutPage.setPhone("blabla");
+    }
+    @Step
+    public void checkPhoneNumberError () {
+        Assert.assertTrue(checkoutPage.checkPhoneNumber("Billing Phone is not a valid phone number."));
     }
     @Step
     public void clickOrderButton () {
@@ -48,7 +57,19 @@ public class CheckoutSteps extends ScenarioSteps {
         fillAdress();
         fillCity();
         fillPostcode();
-        fillPhone();
+        completeValidPhone();
         clickOrderButton();
+    }
+    @StepGroup
+    public void invalidPlaceOrder () {
+        setFirstName();
+        setLastName();
+        selectCountry();
+        fillAdress();
+        fillCity();
+        fillPostcode();
+        completeInvalidPhone();
+        clickOrderButton();
+        checkPhoneNumberError();
     }
 }

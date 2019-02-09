@@ -8,48 +8,56 @@ import net.thucydides.core.pages.PageObject;
 @DefaultUrl("http://qa1.fasttrackit.org:8008/checkout/")
 public class CheckoutPage extends PageObject {
     @FindBy(id = "billing_first_name")
-    private WebElementFacade firstName;
+    private WebElementFacade firstNameField;
     @FindBy(id = "billing_last_name")
-    private WebElementFacade lastName;
+    private WebElementFacade lastNameField;
     @FindBy(id = "billing_country")
-    private WebElementFacade country;
-    @FindBy(id = "billing_adress_1")
-    private WebElementFacade adress;
+    private WebElementFacade countryField;
+    @FindBy(id = "billing_address_1")
+    private WebElementFacade adressField;
     @FindBy(id = "billing_city")
-    private WebElementFacade city;
-    @FindBy(id = "billig_postcode")
-    private WebElementFacade postcode;
+    private WebElementFacade cityField;
+    @FindBy(id = "billing_postcode")
+    private WebElementFacade postcodeField;
     @FindBy(id = "billing_phone")
-    private WebElementFacade telephone;
+    private WebElementFacade telephoneField;
     @FindBy(id = "place_order")
     private WebElementFacade placeOrderButton;
+    @FindBy(css = "ul.woocommerce-error li")
+    private WebElementFacade phoneErrorMessage;
 
-    public void setFirstFiled() {
-        typeInto(firstName, "Ioana");
+    public void setFirstFiled(String firstname) {
+        typeInto(firstNameField, firstname);
     }
 
-    public void setLastField() {
-        typeInto(lastName, "Bohus");
+    public void setLastField(String lastname) {
+        typeInto(lastNameField, lastname);
     }
 
-    public void setCountry() {
-        country.selectByVisibleText("Romania");
+    public void setCountry(String country) {
+        countryField.selectByVisibleText(country);
     }
 
-    public void setAdress() {
-        typeInto(adress, "Buna ziua 35");
+    public void setAdress(String adress) {
+        waitFor(adressField);
+        typeInto(adressField, adress);
     }
 
-    public void setCity() {
-        typeInto(city, "Cluj-Napoca");
+    public void setCity(String city) {
+        typeInto(cityField, city);
     }
 
-    public void setPostcode() {
-        typeInto(postcode, "400498");
+    public void setPostcode(String postcode) {
+        typeInto(postcodeField, postcode);
     }
 
-    public void setPhone() {
-        typeInto(telephone, "0712345678");
+    public void setPhone(String phone) {
+        typeInto(telephoneField, phone);
+    }
+
+    public boolean checkPhoneNumber(String errorMessage) {
+        System.out.println(phoneErrorMessage.getText());
+        return phoneErrorMessage.containsText(errorMessage);
     }
 
     public void clickOnOrderButton() {

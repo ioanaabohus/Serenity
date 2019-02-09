@@ -31,6 +31,13 @@ public class CheckoutTests {
         addToCartSteps.validAdd();
         cartSteps.validProceedToCheckout();
         checkoutSteps.validPlaceOrder();
-
+    }
+    @Test
+    public void invalidProceedCheckout () {
+        loginSteps.validLogin();
+        shopSteps.validShoping();
+        addToCartSteps.validAdd();
+        cartSteps.validProceedToCheckout();
+        checkoutSteps.invalidPlaceOrder();
     }
 }

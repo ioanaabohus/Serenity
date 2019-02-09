@@ -16,21 +16,23 @@ public class CartPage extends PageObject {
     @FindBy(css = "button[name='update_cart']")
     private WebElementFacade updateButton;
     @FindBy(css = "input.input-text.qty")
-    private WebElementFacade quantityUPButton;
+    private WebElementFacade quantityButton;
 
     public void addQuantity() {
-        for (int i = 0; i < 12; i++) {
-            clickOn(quantityUPButton);
-        }
+        typeInto(quantityButton, "12");
     }
 
-    public void checkProductQuantity() {
+    public void clickOnUpdateCart() {
+        clickOn(updateButton);
+    }
+
+    public boolean checkProductQuantity() {
+        waitFor(productPriceSpan);
         String price = productPriceSpan.getText().trim();
         String priceFinal = price.replace(",", "").replace(" lei", "");
 
-        waitABit(5000);
         int pricex = Integer.valueOf(priceFinal);
-
+        waitFor(priceTotal);
         int priceTotalFinal = Integer.valueOf(priceTotal.getText().trim().replace(",", "").replace(" lei", ""));
 
         int subtotal = pricex * 12;
@@ -38,17 +40,14 @@ public class CartPage extends PageObject {
         System.out.println("subtotal: " + subtotal);
         System.out.println("priceTotalFinal: " + priceTotalFinal);
         if (subtotal == priceTotalFinal) {
-            System.out.println("This is correct");
+            return true;
         } else {
-            System.out.println("Try again");
+            return false;
         }
     }
 
-    public void clickOnUpdateCart() {
-        clickOn(updateButton);
-    }
-
     public void clickOnCheckoutButton() {
+        waitFor(proceedToCheckoutButton);
         clickOn(proceedToCheckoutButton);
     }
 }
