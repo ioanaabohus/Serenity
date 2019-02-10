@@ -39,6 +39,22 @@ public class LoginSteps extends ScenarioSteps {
     public void checkErrorMessage() {
         loginPage.checkFailedLogin();
     }
+    @Step
+    public void clickOnOrders () {
+        loginPage.clickOnOrdersButton();
+    }
+    @Step
+    public void clickLogout () {
+        loginPage.clickOnLogoutButton();
+    }
+    @Step
+    public void clickSearchBar () {
+        loginPage.clickOnSearchBar();
+    }
+    @Step
+    public void searchBeanie () {
+        loginPage.searchProduct();
+    }
 
     @StepGroup
     public void validLogin() {
@@ -54,6 +70,29 @@ public class LoginSteps extends ScenarioSteps {
         goToMyAccountButton();
         loginWithInvalidCredentials();
         checkErrorMessage();
+    }
+    @StepGroup
+    public void goToOrders () {
+        navigateToHomePage();
+        goToMyAccountButton();
+        loginWithValidCredentials();
+        clickOnOrders();
+    }
+    @StepGroup
+    public void logout () {
+        navigateToHomePage();
+        goToMyAccountButton();
+        loginWithValidCredentials();
+        clickLogout();
+
+    }
+    @StepGroup
+    public void useSearchBar () {
+        navigateToHomePage();
+        goToMyAccountButton();
+        loginWithValidCredentials();
+        clickSearchBar();
+        searchBeanie();
     }
 
 }

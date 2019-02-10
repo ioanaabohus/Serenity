@@ -5,6 +5,7 @@ import com.fast.steps.serenity.LoginSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,10 @@ public class ShopTests {
 
     @Steps
     ShopSteps shopSteps;
+    @Before
+    public void maximizePage () {
+        driver.manage().window().maximize();
+    }
 
     @Test
     public void goToShop() {

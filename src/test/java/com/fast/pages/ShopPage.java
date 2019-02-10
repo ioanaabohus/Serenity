@@ -18,14 +18,14 @@ public class ShopPage extends PageObject {
     public void clickOnShopButton() {
         clickOn(shopButton);
     }
-
     public boolean selectProduct() {
         for (WebElementFacade product : listOfProducts) {
-            if (product.getText().contains("Beanie with Logo")) {
+            if (product.getText().contains("beanie-logo")) {
                 clickOn(product);
                 return true;
             }
         }
         return false;
     }
+
 }

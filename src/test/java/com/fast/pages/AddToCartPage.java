@@ -6,16 +6,14 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
+import java.util.List;
+
 @DefaultUrl("http://qa1.fasttrackit.org:8008/shop/")
 public class AddToCartPage extends PageObject {
     @FindBy(css = "a[data-product_sku='Woo-beanie-logo']")
     private WebElementFacade product;
     @FindBy(css = "a.added_to_cart")
     private WebElementFacade addedToCart;
-    @FindBy(css = ".product-price .amount")
-    private WebElementFacade productPriceSpan;
-    @FindBy(css = ".product-subtotal .amount")
-    private WebElementFacade priceTotal;
 
     public void addToCart() {
         clickOn(product);
