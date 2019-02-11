@@ -10,7 +10,6 @@ public class OrdersPage extends PageObject {
     private WebElementFacade orderNumber;
 
     public boolean checkExistingOrder (String number) {
-        System.out.println(orderNumber.getText());
         return orderNumber.containsText(number);
     }
 }

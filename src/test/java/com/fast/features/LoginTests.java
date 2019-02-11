@@ -40,6 +40,10 @@ public class LoginTests {
     public void checkSearchBar () {
         loginSteps.useSearchBar();
     }
+    @Test
+    public void clickSearchButton () {
+        loginSteps.goToShop();
+    }
 
 
 }

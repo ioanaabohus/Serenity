@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.Keys;
 
 @DefaultUrl("http://qa1.fasttrackit.org:8008/my-account/")
 public class LoginPage extends PageObject {
@@ -17,24 +18,18 @@ public class LoginPage extends PageObject {
     @FindBy(css = "button[name='login']")
     private WebElementFacade loginButton;
 
-    public void trueCredentialsLogin() {
-        typeInto(emailField, "ioanaa.bohus@gmail.com");
-        typeInto(passwordField, "parolaParola11");
-        clickOn(loginButton);
-    }
-
-    public void invalidCredentialsLogin() {
-        typeInto(emailField, "blabla@whatever.com");
-        typeInto(passwordField, "parolaparolaparola");
+    public void trueCredentialsLogin(String email, String passsword) {
+        typeInto(emailField, email);
+        typeInto(passwordField, passsword);
         clickOn(loginButton);
     }
 
     @FindBy(css = "p strong")
     private WebElementFacade helloIoana;
 
-    public boolean checkLoggedIn() {
+    public boolean checkLoggedIn(String name) {
         waitFor(helloIoana);
-        return helloIoana.containsText("Hello ioanaa.bohus");
+        return helloIoana.containsText(name);
 
     }
 
@@ -65,8 +60,15 @@ public class LoginPage extends PageObject {
          clickOn(searchBar);
      }
      public void searchProduct () {
-         typeInto(searchBar, "beanie");
+         searchBar.sendKeys("beanie with logo", Keys.ENTER);
+
      }
+    @FindBy(css = "li.menu-item-60 a")
+    private WebElementFacade shopButton;
+
+    public void clickOnShopButton() {
+        clickOn(shopButton);
+    }
 
 
 

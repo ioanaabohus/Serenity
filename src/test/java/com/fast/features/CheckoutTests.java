@@ -16,9 +16,6 @@ public class CheckoutTests {
 
     @Steps
     LoginSteps loginSteps;
-
-    @Steps
-    ShopSteps shopSteps;
     @Steps
     AddToCartSteps addToCartSteps;
     @Steps
@@ -31,16 +28,14 @@ public class CheckoutTests {
     }
     @Test
     public void validProcceedCheckout () {
-        loginSteps.validLogin();
-        shopSteps.validShoping();
+        loginSteps.goToShop();
         addToCartSteps.validAdd();
         cartSteps.validProceedToCheckout();
         checkoutSteps.validPlaceOrder();
     }
     @Test
     public void invalidProceedCheckout () {
-        loginSteps.validLogin();
-        shopSteps.validShoping();
+       loginSteps.goToShop();
         addToCartSteps.validAdd();
         cartSteps.validProceedToCheckout();
         checkoutSteps.invalidPlaceOrder();

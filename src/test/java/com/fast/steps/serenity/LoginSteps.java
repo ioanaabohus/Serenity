@@ -5,6 +5,7 @@ import com.fast.pages.LoginPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.junit.Assert;
 
 public class LoginSteps extends ScenarioSteps {
     HomePage homePage;
@@ -22,17 +23,17 @@ public class LoginSteps extends ScenarioSteps {
 
     @Step
     public void loginWithValidCredentials() {
-        loginPage.trueCredentialsLogin();
+        loginPage.trueCredentialsLogin("ioanaa.bohus@gmail.com", "parolaParola11");
     }
 
     @Step
     public void loginWithInvalidCredentials() {
-        loginPage.invalidCredentialsLogin();
+        loginPage.trueCredentialsLogin("blabla@whatever.com", "ihavenoidea");
     }
 
     @Step
     public void checkLoggedIn() {
-        loginPage.checkLoggedIn();
+        Assert.assertTrue(loginPage.checkLoggedIn("ioanaa.bohus"));
     }
 
     @Step
@@ -54,6 +55,10 @@ public class LoginSteps extends ScenarioSteps {
     @Step
     public void searchBeanie () {
         loginPage.searchProduct();
+    }
+    @Step
+    public void clickShopButton () {
+        loginPage.clickOnShopButton();
     }
 
     @StepGroup
@@ -93,6 +98,13 @@ public class LoginSteps extends ScenarioSteps {
         loginWithValidCredentials();
         clickSearchBar();
         searchBeanie();
+    }
+    @StepGroup
+    public void goToShop (){
+        navigateToHomePage();
+        goToMyAccountButton();
+        loginWithValidCredentials();
+        clickShopButton();
     }
 
 }

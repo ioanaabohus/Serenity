@@ -2,7 +2,6 @@ package com.fast.features;
 
 import com.fast.steps.serenity.AddToCartSteps;
 import com.fast.steps.serenity.LoginSteps;
-import com.fast.steps.serenity.ShopSteps;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -18,9 +17,6 @@ public class AddToCartTests {
 
     @Steps
     LoginSteps loginSteps;
-
-    @Steps
-    ShopSteps shopSteps;
     @Steps
     AddToCartSteps addToCartSteps;
     @Before
@@ -29,8 +25,7 @@ public class AddToCartTests {
     }
     @Test
     public void validAddToCart () {
-        loginSteps.validLogin();
-        shopSteps.validShoping();
+        loginSteps.goToShop();
         addToCartSteps.validAdd();
     }
 }
