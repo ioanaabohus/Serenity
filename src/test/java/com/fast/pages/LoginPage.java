@@ -36,9 +36,9 @@ public class LoginPage extends PageObject {
     @FindBy(css = "li strong")
     private WebElementFacade errorMessage;
 
-    public boolean checkFailedLogin() {
+    public boolean checkFailedLogin(String error) {
         waitFor(errorMessage);
-        return errorMessage.containsText("ERROR: Invalid email address.");
+        return errorMessage.containsText(error);
     }
 
     @FindBy(css = "li.woocommerce-MyAccount-navigation-link--orders a")

@@ -15,12 +15,12 @@ public class RegistrationPage extends PageObject {
     @FindBy(css = "p.woocommerce-FormRow button")
     private WebElementFacade registerButton;
 
-    public void setRegistrationEmail() {
-        typeInto(registrationEmail, "ioanaa.bohus@gmail.com");
+    public void setRegistrationEmail(String email) {
+        typeInto(registrationEmail, email);
     }
 
-    public void setRegistrationPassword() {
-        typeInto(registrationPassword, "parolaParola11");
+    public void setRegistrationPassword(String password) {
+        typeInto(registrationPassword, password);
     }
 
     public void clickOnRegisterButton() {

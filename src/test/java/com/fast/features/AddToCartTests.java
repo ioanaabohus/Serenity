@@ -26,6 +26,6 @@ public class AddToCartTests {
     @Test
     public void validAddToCart () {
         loginSteps.goToShop();
-        addToCartSteps.validAdd();
+        addToCartSteps.addBeanieToCart();
     }
 }

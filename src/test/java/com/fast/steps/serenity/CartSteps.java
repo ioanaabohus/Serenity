@@ -26,7 +26,7 @@ public class CartSteps extends ScenarioSteps {
     }
 
     @StepGroup
-    public void validProceedToCheckout () {
+    public void ProceedToCheckout () {
         changeQuantity();
         clickUpdateButton();
         checkQuantity();

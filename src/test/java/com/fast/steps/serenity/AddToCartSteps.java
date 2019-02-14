@@ -8,24 +8,19 @@ import org.junit.Assert;
 
 public class AddToCartSteps extends ScenarioSteps {
     AddToCartPage addToCartPage;
-//
-//    @Step
-//    public void addToCart() {
-//        addToCartPage.addToCart();
-//    }
-//
+
     @Step
     public void selectFromList () {
       addToCartPage.selectProduct("Beanie with Logo");
     }
-//    @Step
-//    public void viewCart() {
-//        addToCartPage.viewCart();
-//    }
+    @Step
+    public void viewCart() {
+        addToCartPage.viewCart();
+    }
 
     @StepGroup
-    public void validAdd() {
+    public void addBeanieToCart() {
        selectFromList();
-//       viewCart();
+       viewCart();
     }
 }

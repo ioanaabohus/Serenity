@@ -15,7 +15,7 @@ public class AddToCartPage extends PageObject {
     private WebElementFacade product;
     @FindBy(css = "a.added_to_cart")
     private WebElementFacade addedToCart;
-    @FindBy(className = ".product")
+    @FindBy(css = ".product")
     List<WebElementFacade> listOfProducts;
 
     public boolean selectProduct(String text) {
@@ -28,13 +28,9 @@ public class AddToCartPage extends PageObject {
         return false;
     }
 
-//    public void viewCart() {
-//        clickOn(addedToCart);
-//    }
-
-//    public void addToCart() {
-//        clickOn(product);
-//    }
+    public void viewCart() {
+        clickOn(addedToCart);
+    }
 }
 
 

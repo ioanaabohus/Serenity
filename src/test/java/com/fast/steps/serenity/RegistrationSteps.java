@@ -26,12 +26,12 @@ public class RegistrationSteps extends ScenarioSteps {
 
     @Step
     public void setRegistrationEmail() {
-        registrationPage.setRegistrationEmail();
+        registrationPage.setRegistrationEmail("ioanaa.bohus@gmail.com");
     }
 
     @Step
     public void setRegistrationPassword() {
-        registrationPage.setRegistrationPassword();
+        registrationPage.setRegistrationPassword("parolaParola11");
     }
 
     @Step

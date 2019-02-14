@@ -2,6 +2,7 @@ package com.fast.steps.serenity;
 
 import com.fast.pages.HomePage;
 import com.fast.pages.LoginPage;
+import com.fast.utils.Constants;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -23,7 +24,7 @@ public class LoginSteps extends ScenarioSteps {
 
     @Step
     public void loginWithValidCredentials() {
-        loginPage.trueCredentialsLogin("ioanaa.bohus@gmail.com", "parolaParola11");
+        loginPage.trueCredentialsLogin(Constants.USER_EMAIL, Constants.USER_PASS);
     }
 
     @Step
@@ -37,8 +38,8 @@ public class LoginSteps extends ScenarioSteps {
     }
 
     @Step
-    public void checkErrorMessage() {
-        loginPage.checkFailedLogin();
+    public void checkLoginError() {
+        loginPage.checkFailedLogin("ERROR: Invalid email address.");
     }
     @Step
     public void clickOnOrders () {
@@ -74,7 +75,7 @@ public class LoginSteps extends ScenarioSteps {
         navigateToHomePage();
         goToMyAccountButton();
         loginWithInvalidCredentials();
-        checkErrorMessage();
+        checkLoginError();
     }
     @StepGroup
     public void goToOrders () {
